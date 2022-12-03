@@ -24,36 +24,71 @@
                                 </thead>
                                 <tbody>
                                     <?php foreach (get_seleksi_by_id_user(session()->get('id_user')) as $key => $value) { ?>
-                                        <tr>
-                                            <td><?=  ++$key ?></td>
-                                            <td><?=$value->kode_seleksi ?></td>
-                                            <td>
-                                                <ol>
-                                                    <?php if(get_rating_by_kode_seleksi_all($value->kode_seleksi)){ ?>
-                                                        <?php foreach (get_rating_by_kode_seleksi_all($value->kode_seleksi) as $key2 => $value2) { ?>
-                                                            <li><?= get_alternatif_by_kode_alternatif($value2->kode_alternatif)['nama_alternatif'] ?> - (<?= $value2->hasil ?>) - (Ranking ke <?= $value2->ranking ?>)</li>
+                                        <?php if(strpos(get_alternatif_by_kode_alternatif($value->kode_alternatif)['nama_alternatif'], "Minyak Daun") === 0){ ?>
+                                            <tr>
+                                                <td><?= ++$key ?></td>
+                                                <td><?= get_user_by_id_user($value->id_user)['nama_lengkap'] ?> - <?= $value->kode_seleksi ?> (<?= get_user_by_id_user($value->id_user)['role'] == 2 ? "Me" : "Collector" ?>)</td>
+                                                <td>
+                                                    <ol>
+                                                        <?php if(get_rating_by_kode_seleksi_all($value->kode_seleksi)){ ?>
+                                                            <?php foreach (get_rating_by_kode_seleksi_all($value->kode_seleksi) as $key2 => $value2) { ?>
+                                                                <li><?= get_alternatif_by_kode_alternatif($value2->kode_alternatif)['nama_alternatif'] ?> - (<?= $value2->hasil ?>) - (Ranking ke <?= $value2->ranking ?>)</li>
+                                                            <?php } ?>
+                                                        <?php }else{?>
+                                                            <span class="badge badge-danger text-danger">Urutan Belum Tersedia</span>
                                                         <?php } ?>
-                                                    <?php }else{?>
-                                                        <span class="badge badge-danger">Urutan Belum Tersedia</span>
-                                                    <?php } ?>
-                                                </ol>
-                                            </td>
-                                            <td>
-                                                <b>
-                                                    <?php if(get_rekomendasi_by_kode_seleksi($value->kode_seleksi)){ ?>
-                                                        <?= get_alternatif_by_kode_alternatif(get_rekomendasi_by_kode_seleksi($value->kode_seleksi)['kode_alternatif'])['nama_alternatif'] ?>
-                                                    <?php }else{?>
-                                                        <span class="badge badge-danger">Rekomendasi Belum Tersedia</span>
-                                                    <?php } ?>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <?= $value->created_at ?>
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-iconsolid btn-sm" href="<?= route_to('hasil_panen_collector_detail', $value->kode_seleksi) ?>"><i class="icon-pencil">Detail Perhitungan</i></a>
-                                            </td>
-                                        </tr>
+                                                    </ol>
+                                                </td>
+                                                <td>
+                                                    <b>
+                                                        <?php if(get_rekomendasi_by_kode_seleksi($value->kode_seleksi)){ ?>
+                                                            <?= get_alternatif_by_kode_alternatif(get_rekomendasi_by_kode_seleksi($value->kode_seleksi)['kode_alternatif'])['nama_alternatif'] ?>
+                                                        <?php }else{?>
+                                                            <span class="badge badge-danger text-danger">Rekomendasi Belum Tersedia</span>
+                                                        <?php } ?>
+                                                    </b>
+                                                </td>
+                                                <td>
+                                                    <?= $value->created_at ?>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-primary btn-sm" href="<?= route_to('hasil_panen_collector_detail', $value->kode_seleksi, 'Minyak Daun') ?>"><i class="bx bx-pencil fs-4"></i>Detail Perhitungan</i></a>
+                                                </td>
+                                            </tr>
+                                        <?php }?>
+
+                                        <?php if(strpos(get_alternatif_by_kode_alternatif($value->kode_alternatif)['nama_alternatif'], "Minyak Gagang") === 0){ ?>
+                                            <tr>
+                                                <td><?= ++$key ?></td>
+                                                <td><?= get_user_by_id_user($value->id_user)['nama_lengkap'] ?> - <?= $value->kode_seleksi ?> (<?= get_user_by_id_user($value->id_user)['role'] == 2 ? "Me" : "Collector" ?>)</td>
+                                                <td>
+                                                    <ol>
+                                                        <?php if(get_rating_by_kode_seleksi_all($value->kode_seleksi)){ ?>
+                                                            <?php foreach (get_rating_by_kode_seleksi_all($value->kode_seleksi) as $key2 => $value2) { ?>
+                                                                <li><?= get_alternatif_by_kode_alternatif($value2->kode_alternatif)['nama_alternatif'] ?> - (<?= $value2->hasil ?>) - (Ranking ke <?= $value2->ranking ?>)</li>
+                                                            <?php } ?>
+                                                        <?php }else{?>
+                                                            <span class="badge badge-danger text-danger">Urutan Belum Tersedia</span>
+                                                        <?php } ?>
+                                                    </ol>
+                                                </td>
+                                                <td>
+                                                    <b>
+                                                        <?php if(get_rekomendasi_by_kode_seleksi($value->kode_seleksi)){ ?>
+                                                            <?= get_alternatif_by_kode_alternatif(get_rekomendasi_by_kode_seleksi($value->kode_seleksi)['kode_alternatif'])['nama_alternatif'] ?>
+                                                        <?php }else{?>
+                                                            <span class="badge badge-danger text-danger">Rekomendasi Belum Tersedia</span>
+                                                        <?php } ?>
+                                                    </b>
+                                                </td>
+                                                <td>
+                                                    <?= $value->created_at ?>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-primary btn-sm" href="<?= route_to('hasil_panen_collector_detail', $value->kode_seleksi, 'Minyak Gagang') ?>"><i class="bx bx-pencil fs-4"></i>Detail Perhitungan</i></a>
+                                                </td>
+                                            </tr>
+                                        <?php }?>
                                     <?php } ?>
                                 </tbody>
                             </table>

@@ -61,10 +61,10 @@
                                                         data-bobot="<?= $value_2->bobot ?>"
                                                         data-keterangan="<?= $value_2->keterangan ?>"
                                                         >
-                                                        <i class="icon-pencil"></i>
+                                                        <i class="icon-pencil">Edit</i>
                                                     </button>
                                                     <button class="btn btn-iconsolid btn-danger btn-sm btn-delete" data-id="<?= $value_2->id_sub_kriteria ?>">
-                                                        <i class="icon-trash"></i>
+                                                        <i class="icon-trash">Delete</i>
                                                     </button>
                                                 </td>
                                             </tr>

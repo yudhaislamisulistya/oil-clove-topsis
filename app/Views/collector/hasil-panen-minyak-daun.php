@@ -13,7 +13,7 @@
                     <?php if(session()->getFlashData('status') == "success"){ ?>
                         <div class="alert alert-success alert-dismissable alert-style-1">
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="zmdi zmdi-check"></i>Proses Berhasil, Silahkan Cek Hasilnya Disini <a href="<?= route_to('hasil_panen_collector_detail', session()->getFlashdata('kode_seleksi')) ?>" class="btn btn-info btn-sm">CEK</a>
+                            <i class="zmdi zmdi-check"></i>Proses Berhasil, Silahkan Cek Hasilnya Disini <a href="<?= route_to('hasil_panen_collector_detail', session()->getFlashdata('kode_seleksi'), 'Minyak Daun') ?>" class="btn btn-info btn-sm">CEK</a>
                         </div>
                         <?php }else if(session()->getFlashData('status') == "failed"){ ?>
                         <div class="alert alert-danger alert-dismissable alert-style-1">
@@ -34,7 +34,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach (get_alternatif() as $key => $value) { ?>
+                                    <?php foreach (get_alternatif_by_contains("Minyak Daun") as $key => $value) { ?>
+
                                     <tr>
                                         <td><?= $value->kode_alternatif ?></td>
                                         <td><?= $value->nama_alternatif ?></td>
@@ -92,12 +93,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach (get_seleksi_by_id_user_dan_group_by_kode_seleksi(session()->get('id_user')) as $key => $value) { ?>
+                                    <?php foreach (get_seleksi_by_id_user_dan_group_by_kode_seleksi(session()->get('id_user'), 'Minyak Daun') as $key => $value) { ?>
                                         <tr>
                                             <td><?= ++$key ?></td>
                                             <td><?= $value->kode_seleksi ?></td>
                                             <td>
-                                            <a href="<?= route_to('hasil_panen_collector_detail', $value->kode_seleksi) ?>" class="btn btn-primary btn-sm">Detail Perhitungan</a>
+                                            <a href="<?= route_to('hasil_panen_collector_detail', $value->kode_seleksi, 'Minyak Daun') ?>" class="btn btn-primary btn-sm">Detail Perhitungan</a>
                                             <a href="<?= route_to('hasil_panen_collector_delete', $value->kode_seleksi) ?>" class="btn btn-danger btn-sm">Hapus</a>
                                             </td>
                                         </tr>

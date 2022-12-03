@@ -44,9 +44,17 @@ function get_alternatif(){
     return $data;
 }
 
-function get_seleksi_by_id_user_dan_group_by_kode_seleksi($id_user){
+function get_alternatif_by_contains($nama_alternatif){
+    $alternatifModel = new AlternatifModel();
+    $data = $alternatifModel->like('nama_alternatif', $nama_alternatif)->get()->getResult();
+    return $data;
+}
+
+function get_seleksi_by_id_user_dan_group_by_kode_seleksi($id_user, $name_alternatif){
     $seleksiModel = new SeleksiModel();
-    $data = $seleksiModel->where('id_user', $id_user)->groupBy('kode_seleksi')->get()->getResult();
+    $alternatifModel = new AlternatifModel();
+    $kode_alternatif = $alternatifModel->like('nama_alternatif', $name_alternatif)->first();
+    $data = $seleksiModel->where('id_user', $id_user)->where('kode_alternatif', $kode_alternatif['kode_alternatif'])->groupBy('kode_seleksi')->get()->getResult();
     return $data;
 }
 

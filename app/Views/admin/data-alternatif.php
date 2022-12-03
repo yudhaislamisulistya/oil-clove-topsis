@@ -45,7 +45,15 @@
                                         <tr>
                                             <td><?= ++$key ?></td>
                                             <td><?= $value->kode_alternatif ?></td>
-                                            <td><?= $value->nama_alternatif ?></td>
+                                            <td>
+                                                <?php if(strpos($value->nama_alternatif, "Minyak Daun") === 0){ ?>
+                                                    <span class="badge bg-success"><?= $value->nama_alternatif ?></span>
+                                                <?php } ?>
+
+                                                <?php if(strpos($value->nama_alternatif, "Minyak Gagang") === 0){ ?>
+                                                    <span class="badge bg-primary"><?= $value->nama_alternatif ?></span>
+                                                <?php }?>
+                                            </td>
                                             <td>
                                                 <a href="#" class="btn btn-info btn-sm btn-edit"
                                                         data-id="<?= $value->id_alternatif;?>"

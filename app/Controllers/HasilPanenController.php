@@ -14,8 +14,11 @@ class HasilPanenController extends BaseController
         $this->seleksiModel = new SeleksiModel();
         $this->rekomendasiModel = new RekomendasiModel();
     }
-    public function index(){
-        return view('collector/hasil-panen');
+    public function index_minyak_daun(){
+        return view('collector/hasil-panen-minyak-daun');
+    }
+    public function index_minyak_gagang(){
+        return view('collector/hasil-panen-minyak-gagang');
     }
     public function save(){
         try {
@@ -39,23 +42,23 @@ class HasilPanenController extends BaseController
                 }
             }
             session()->setFlashdata('kode_seleksi', $kode_seleksi);
-            return redirect()->to(base_url('collector/hasil-panen'))->with('status', 'success');
+            return redirect()->back()->with('status', 'success');
         } catch (\Exception $th) {
             var_dump($th);
             die();
-            return redirect()->to(base_url('collector/hasil-panen'))->with('status', 'failed');
+            return redirect()->back()->with('status', 'failed');
         }
     }
     public function delete($kode_seleksi){
         try {
             $this->seleksiModel->where('kode_seleksi', $kode_seleksi)->delete();
-            return redirect()->to(base_url('collector/hasil-panen'))->with('status', 'success_delete');
+            return redirect()->back()->with('status', 'success_delete');
         } catch (\Exception $th) {
-            return redirect()->to(base_url('collector/hasil-panen'))->with('status', 'failed_delete');
+            return redirect()->back()->with('status', 'failed_delete');
         }
     }
-    public function detail($kode_seleksi){
-        return view('collector/detail-hasil-panen', compact('kode_seleksi'));
+    public function detail($kode_seleksi, $nama_alternatif){
+        return view('collector/detail-hasil-panen', compact('kode_seleksi', 'nama_alternatif'));
     }
     public function save_rating(){
         try {
@@ -81,9 +84,19 @@ class HasilPanenController extends BaseController
                 'kode_seleksi' => $kode_seleksi,
                 'kode_alternatif' => $kode_alternatif
             ]);
-            return redirect()->to(base_url('collector/hasil-panen/detail/'.$kode_seleksi))->with('status', 'succes');
+
+            $status = '';
+            if(strpos(get_alternatif_by_kode_alternatif($kode_alternatif)['nama_alternatif'], 'Minyak Daun') === 0){
+                $status = "Minyak Daun";
+            }
+
+            if(strpos(get_alternatif_by_kode_alternatif($kode_alternatif)['nama_alternatif'], 'Minyak Gagang') === 0){
+                $status = "Minyak Gagang";
+            }
+
+            return redirect()->to(base_url('collector/hasil-panen/detail/'.$kode_seleksi.'/'.$status))->with('status', 'succes');
         } catch (\Exception $th) {
-            return redirect()->to(base_url('collector/hasil-panen/detail/'.$kode_seleksi))->with('status', 'failed');
+            return redirect()->to(base_url('collector/hasil-panen/detail/'.$kode_seleksi.'/'.$status))->with('status', 'failed');
         }
     }
 }

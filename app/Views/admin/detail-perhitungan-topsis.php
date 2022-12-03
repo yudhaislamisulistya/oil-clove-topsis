@@ -25,7 +25,7 @@
                                 <?php 
                                     $a_nilai_setiap_alternatif = array()
                                 ?>
-                                <?php foreach (get_alternatif() as $key => $value) { ?>
+                                <?php foreach (get_alternatif_by_contains($nama_alternatif) as $key => $value) { ?>
                                     <tr>
                                         <td><?= $value->kode_alternatif ?></td>
                                         <td><?= $value->nama_alternatif ?></td>
@@ -51,7 +51,7 @@
                                 <?php
                                     $a_nilai_setiap_sub_kriteria = array();
                                     for ($i=0; $i < count(get_kriteria()); $i++) { 
-                                        for ($j=$i; $j < count(get_alternatif())*count(get_kriteria()); $j+=count(get_kriteria())) {
+                                        for ($j=$i; $j < count(get_alternatif_by_contains($nama_alternatif))*count(get_kriteria()); $j+=count(get_kriteria())) {
                                             $a_nilai_setiap_sub_kriteria[$i][$j] = $a_nilai_setiap_alternatif[$j];
                                         }
                                     }
@@ -97,7 +97,7 @@
                                 <?php 
                                     $a_nilai_setiap_alternatif = array()
                                 ?>
-                                <?php foreach (get_alternatif() as $key => $value) { ?>
+                                <?php foreach (get_alternatif_by_contains($nama_alternatif) as $key => $value) { ?>
                                     <?php foreach (get_kriteria() as $key2 => $value2) { ?>
                                         <?php foreach (get_sub_kriteria_by_kode_kriteria($value2->kode_kriteria) as $key3 => $value3) { ?>
                                             <?php
@@ -116,7 +116,7 @@
                                 <?php
                                     $a_nilai_setiap_sub_kriteria = array();
                                     for ($i=0; $i < count(get_kriteria()); $i++) { 
-                                        for ($j=$i; $j < count(get_alternatif())*count(get_kriteria()); $j+=count(get_kriteria())) {
+                                        for ($j=$i; $j < count(get_alternatif_by_contains($nama_alternatif))*count(get_kriteria()); $j+=count(get_kriteria())) {
                                             $a_nilai_setiap_sub_kriteria[$i][$j] = $a_nilai_setiap_alternatif[$j];
                                         }
                                     }
@@ -133,7 +133,7 @@
                                         array_push($a_nilai_pembagi, sqrt($pembagi));
                                     ?>
                                 <?php  }  ?>
-                                <?php foreach (get_alternatif() as $key => $value) { ?>
+                                <?php foreach (get_alternatif_by_contains($nama_alternatif) as $key => $value) { ?>
                                     <tr>
                                         <td><?= $value->kode_alternatif ?></td>
                                         <td><?= $value->nama_alternatif ?></td>
@@ -182,7 +182,7 @@
                                 <?php 
                                     $a_nilai_setiap_alternatif = array()
                                 ?>
-                                <?php foreach (get_alternatif() as $key => $value) { ?>
+                                <?php foreach (get_alternatif_by_contains($nama_alternatif) as $key => $value) { ?>
                                     <?php foreach (get_kriteria() as $key2 => $value2) { ?>
                                         <?php foreach (get_sub_kriteria_by_kode_kriteria($value2->kode_kriteria) as $key3 => $value3) { ?>
                                             <?php
@@ -201,7 +201,7 @@
                                 <?php
                                     $a_nilai_setiap_sub_kriteria = array();
                                     for ($i=0; $i < count(get_kriteria()); $i++) { 
-                                        for ($j=$i; $j < count(get_alternatif())*count(get_kriteria()); $j+=count(get_kriteria())) {
+                                        for ($j=$i; $j < count(get_alternatif_by_contains($nama_alternatif))*count(get_kriteria()); $j+=count(get_kriteria())) {
                                             $a_nilai_setiap_sub_kriteria[$i][$j] = $a_nilai_setiap_alternatif[$j];
                                         }
                                     }
@@ -218,7 +218,7 @@
                                         array_push($a_nilai_pembagi, sqrt($pembagi));
                                     ?>
                                 <?php  }  ?>
-                                <?php foreach (get_alternatif() as $key => $value) { ?>
+                                <?php foreach (get_alternatif_by_contains($nama_alternatif) as $key => $value) { ?>
                                     <tr>
                                         <td><?= $value->kode_alternatif ?></td>
                                         <td><?= $value->nama_alternatif ?></td>
@@ -266,7 +266,7 @@
                                 <?php 
                                     $a_nilai_setiap_alternatif = array()
                                 ?>
-                                <?php foreach (get_alternatif() as $key => $value) { ?>
+                                <?php foreach (get_alternatif_by_contains($nama_alternatif) as $key => $value) { ?>
                                     <?php foreach (get_kriteria() as $key2 => $value2) { ?>
                                         <?php foreach (get_sub_kriteria_by_kode_kriteria($value2->kode_kriteria) as $key3 => $value3) { ?>
                                             <?php
@@ -285,7 +285,7 @@
                                 <?php
                                     $a_nilai_setiap_sub_kriteria = array();
                                     for ($i=0; $i < count(get_kriteria()); $i++) { 
-                                        for ($j=$i; $j < count(get_alternatif())*count(get_kriteria()); $j+=count(get_kriteria())) {
+                                        for ($j=$i; $j < count(get_alternatif_by_contains($nama_alternatif))*count(get_kriteria()); $j+=count(get_kriteria())) {
                                             $a_nilai_setiap_sub_kriteria[$i][$j] = $a_nilai_setiap_alternatif[$j];
                                         }
                                     }
@@ -305,7 +305,7 @@
                                 <?php
                                     $a_nilai_solusi_positif_negatif = array();
                                 ?>
-                                <?php foreach (get_alternatif() as $key => $value) { ?>
+                                <?php foreach (get_alternatif_by_contains($nama_alternatif) as $key => $value) { ?>
                                     <?php foreach (get_kriteria() as $key2 => $value2) { ?>
                                             <?php foreach (get_sub_kriteria_by_kode_kriteria($value2->kode_kriteria) as $key3 => $value3) { ?>
                                                 <?php
@@ -324,7 +324,7 @@
                                 <?php
                                     $a_nilai_setiap_sub_kriteria = array();
                                     for ($i=0; $i < count(get_kriteria()); $i++) { 
-                                        for ($j=$i; $j < count(get_alternatif())*count(get_kriteria()); $j+=count(get_kriteria())) {
+                                        for ($j=$i; $j < count(get_alternatif_by_contains($nama_alternatif))*count(get_kriteria()); $j+=count(get_kriteria())) {
                                             $a_nilai_setiap_sub_kriteria[$i][$j] = $a_nilai_solusi_positif_negatif[$j];
                                         }
                                     }
@@ -375,7 +375,7 @@
                                         <?php 
                                             $a_nilai_setiap_alternatif = array()
                                         ?>
-                                        <?php foreach (get_alternatif() as $key => $value) { ?>
+                                        <?php foreach (get_alternatif_by_contains($nama_alternatif) as $key => $value) { ?>
                                             <?php foreach (get_kriteria() as $key2 => $value2) { ?>
                                                 <?php foreach (get_sub_kriteria_by_kode_kriteria($value2->kode_kriteria) as $key3 => $value3) { ?>
                                                     <?php
@@ -394,7 +394,7 @@
                                         <?php
                                             $a_nilai_setiap_sub_kriteria = array();
                                             for ($i=0; $i < count(get_kriteria()); $i++) { 
-                                                for ($j=$i; $j < count(get_alternatif())*count(get_kriteria()); $j+=count(get_kriteria())) {
+                                                for ($j=$i; $j < count(get_alternatif_by_contains($nama_alternatif))*count(get_kriteria()); $j+=count(get_kriteria())) {
                                                     $a_nilai_setiap_sub_kriteria[$i][$j] = $a_nilai_setiap_alternatif[$j];
                                                 }
                                             }
@@ -414,7 +414,7 @@
                                         <?php
                                             $a_nilai_solusi_positif_negatif = array();
                                         ?>
-                                        <?php foreach (get_alternatif() as $key => $value) { ?>
+                                        <?php foreach (get_alternatif_by_contains($nama_alternatif) as $key => $value) { ?>
                                             <?php foreach (get_kriteria() as $key2 => $value2) { ?>
                                                     <?php foreach (get_sub_kriteria_by_kode_kriteria($value2->kode_kriteria) as $key3 => $value3) { ?>
                                                         <?php
@@ -434,13 +434,13 @@
                                             $a_nilai_setiap_sub_kriteria = array();
                                             for ($i=0; $i < count(get_kriteria()); $i++) { 
                                                 $jj = 0;
-                                                for ($j=$i; $j < count(get_alternatif())*count(get_kriteria()); $j+=count(get_kriteria())) {
+                                                for ($j=$i; $j < count(get_alternatif_by_contains($nama_alternatif))*count(get_kriteria()); $j+=count(get_kriteria())) {
                                                     $a_nilai_setiap_sub_kriteria[$i][$jj] = $a_nilai_solusi_positif_negatif[$j];
                                                     $jj++;
                                                 }
                                             }
                                         ?>
-                                        <?php foreach (get_alternatif() as $key2 => $value2) { ?>
+                                        <?php foreach (get_alternatif_by_contains($nama_alternatif) as $key2 => $value2) { ?>
                                             <tr>
                                                 <?php
                                                     if($key2 == 0){
@@ -478,7 +478,7 @@
                                         <?php 
                                             $a_nilai_setiap_alternatif = array()
                                         ?>
-                                        <?php foreach (get_alternatif() as $key => $value) { ?>
+                                        <?php foreach (get_alternatif_by_contains($nama_alternatif) as $key => $value) { ?>
                                             <?php foreach (get_kriteria() as $key2 => $value2) { ?>
                                                 <?php foreach (get_sub_kriteria_by_kode_kriteria($value2->kode_kriteria) as $key3 => $value3) { ?>
                                                     <?php
@@ -497,7 +497,7 @@
                                         <?php
                                             $a_nilai_setiap_sub_kriteria = array();
                                             for ($i=0; $i < count(get_kriteria()); $i++) { 
-                                                for ($j=$i; $j < count(get_alternatif())*count(get_kriteria()); $j+=count(get_kriteria())) {
+                                                for ($j=$i; $j < count(get_alternatif_by_contains($nama_alternatif))*count(get_kriteria()); $j+=count(get_kriteria())) {
                                                     $a_nilai_setiap_sub_kriteria[$i][$j] = $a_nilai_setiap_alternatif[$j];
                                                 }
                                             }
@@ -517,7 +517,7 @@
                                         <?php
                                             $a_nilai_solusi_positif_negatif = array();
                                         ?>
-                                        <?php foreach (get_alternatif() as $key => $value) { ?>
+                                        <?php foreach (get_alternatif_by_contains($nama_alternatif) as $key => $value) { ?>
                                             <?php foreach (get_kriteria() as $key2 => $value2) { ?>
                                                     <?php foreach (get_sub_kriteria_by_kode_kriteria($value2->kode_kriteria) as $key3 => $value3) { ?>
                                                         <?php
@@ -537,13 +537,13 @@
                                             $a_nilai_setiap_sub_kriteria = array();
                                             for ($i=0; $i < count(get_kriteria()); $i++) { 
                                                 $jj = 0;
-                                                for ($j=$i; $j < count(get_alternatif())*count(get_kriteria()); $j+=count(get_kriteria())) {
+                                                for ($j=$i; $j < count(get_alternatif_by_contains($nama_alternatif))*count(get_kriteria()); $j+=count(get_kriteria())) {
                                                     $a_nilai_setiap_sub_kriteria[$i][$jj] = $a_nilai_solusi_positif_negatif[$j];
                                                     $jj++;
                                                 }
                                             }
                                         ?>
-                                        <?php foreach (get_alternatif() as $key2 => $value2) { ?>
+                                        <?php foreach (get_alternatif_by_contains($nama_alternatif) as $key2 => $value2) { ?>
                                             <tr>
                                                 <?php
                                                     if($key2 == 0){
@@ -593,7 +593,7 @@
                                         <?php 
                                             $a_nilai_setiap_alternatif = array()
                                         ?>
-                                        <?php foreach (get_alternatif() as $key => $value) { ?>
+                                        <?php foreach (get_alternatif_by_contains($nama_alternatif) as $key => $value) { ?>
                                             <?php foreach (get_kriteria() as $key2 => $value2) { ?>
                                                 <?php foreach (get_sub_kriteria_by_kode_kriteria($value2->kode_kriteria) as $key3 => $value3) { ?>
                                                     <?php
@@ -612,7 +612,7 @@
                                         <?php
                                             $a_nilai_setiap_sub_kriteria = array();
                                             for ($i=0; $i < count(get_kriteria()); $i++) { 
-                                                for ($j=$i; $j < count(get_alternatif())*count(get_kriteria()); $j+=count(get_kriteria())) {
+                                                for ($j=$i; $j < count(get_alternatif_by_contains($nama_alternatif))*count(get_kriteria()); $j+=count(get_kriteria())) {
                                                     $a_nilai_setiap_sub_kriteria[$i][$j] = $a_nilai_setiap_alternatif[$j];
                                                 }
                                             }
@@ -632,7 +632,7 @@
                                         <?php
                                             $a_nilai_solusi_positif_negatif = array();
                                         ?>
-                                        <?php foreach (get_alternatif() as $key => $value) { ?>
+                                        <?php foreach (get_alternatif_by_contains($nama_alternatif) as $key => $value) { ?>
                                             <?php foreach (get_kriteria() as $key2 => $value2) { ?>
                                                     <?php foreach (get_sub_kriteria_by_kode_kriteria($value2->kode_kriteria) as $key3 => $value3) { ?>
                                                         <?php
@@ -652,7 +652,7 @@
                                             $a_nilai_setiap_sub_kriteria = array();
                                             for ($i=0; $i < count(get_kriteria()); $i++) { 
                                                 $jj = 0;
-                                                for ($j=$i; $j < count(get_alternatif())*count(get_kriteria()); $j+=count(get_kriteria())) {
+                                                for ($j=$i; $j < count(get_alternatif_by_contains($nama_alternatif))*count(get_kriteria()); $j+=count(get_kriteria())) {
                                                     $a_nilai_setiap_sub_kriteria[$i][$jj] = $a_nilai_solusi_positif_negatif[$j];
                                                     $jj++;
                                                 }
@@ -662,7 +662,7 @@
                                             $a_d_plus_alternatif = array();
                                             $a_d_mines_alternatif = array();
                                         ?>
-                                        <?php foreach (get_alternatif() as $key2 => $value2) { ?>
+                                        <?php foreach (get_alternatif_by_contains($nama_alternatif) as $key2 => $value2) { ?>
                                             <?php
                                                 $d_plus_alternatif = 0; 
                                             ?>
@@ -674,7 +674,7 @@
                                                 array_push($a_d_plus_alternatif, $d_plus_alternatif);
                                             ?>
                                         <?php } ?>
-                                        <?php foreach (get_alternatif() as $key2 => $value2) { ?>
+                                        <?php foreach (get_alternatif_by_contains($nama_alternatif) as $key2 => $value2) { ?>
                                             <?php
                                                 $d_mines_alternatif = 0; 
                                             ?>
@@ -689,7 +689,7 @@
                                         <?php
                                             $rank_result = array();
                                         ?>
-                                        <?php foreach (get_alternatif() as $key2 => $value2) { ?>
+                                        <?php foreach (get_alternatif_by_contains($nama_alternatif) as $key2 => $value2) { ?>
                                                 <?php 
                                                     $hasil_final[$key2] = $a_d_mines_alternatif[$key2] / ($a_d_mines_alternatif[$key2]+$a_d_plus_alternatif[$key2]);
                                                 ?>
@@ -703,7 +703,7 @@
                                                 ?>
                                         <?php } ?>
                                         <form action="<?= route_to('perhitungan_topsis_admin_save_rating') ?>" method="post">
-                                            <?php foreach (get_alternatif() as $key2 => $value2) { ?>
+                                            <?php foreach (get_alternatif_by_contains($nama_alternatif) as $key2 => $value2) { ?>
                                                 <tr>
                                                     <td><?= $value2->kode_alternatif ?> - <?= $value2->nama_alternatif ?></td>
                                                     <td><?php 
